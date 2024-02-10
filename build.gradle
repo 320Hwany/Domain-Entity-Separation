@@ -41,6 +41,9 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
+    // password encoder
+    implementation 'org.springframework.security:spring-security-crypto:5.5.8'
+
     // test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
