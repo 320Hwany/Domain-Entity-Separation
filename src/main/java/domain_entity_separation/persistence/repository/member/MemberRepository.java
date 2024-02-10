@@ -6,6 +6,8 @@ import java.util.Optional;
 
 public interface MemberRepository {
 
+    void save(final MemberJpaEntity memberJpaEntity);
+
     MemberJpaEntity getById(final long memberId);
 
     MemberJpaEntity getByLoginId(final String loginId);

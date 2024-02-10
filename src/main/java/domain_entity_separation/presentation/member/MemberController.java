@@ -2,6 +2,7 @@ package domain_entity_separation.presentation.member;
 
 import domain_entity_separation.application.member.MemberService;
 import domain_entity_separation.dto.member.MemberLoginRequest;
+import domain_entity_separation.dto.member.MemberSignupRequest;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,11 @@ public class MemberController {
 
     public MemberController(final MemberService memberService) {
         this.memberService = memberService;
+    }
+
+    @PostMapping("/signup")
+    public void signup(@RequestBody final MemberSignupRequest memberSignupRequest) {
+        memberService.signup(memberSignupRequest);
     }
 
     @PostMapping("/login")

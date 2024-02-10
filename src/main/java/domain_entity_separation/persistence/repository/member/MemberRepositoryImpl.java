@@ -3,7 +3,6 @@ package domain_entity_separation.persistence.repository.member;
 import domain_entity_separation.persistence.entity.member.MemberJpaEntity;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
 
 @Repository
 public class MemberRepositoryImpl implements MemberRepository {
@@ -12,6 +11,11 @@ public class MemberRepositoryImpl implements MemberRepository {
 
     public MemberRepositoryImpl(final MemberJpaRepository memberJpaRepository) {
         this.memberJpaRepository = memberJpaRepository;
+    }
+
+    @Override
+    public void save(final MemberJpaEntity memberJpaEntity) {
+        memberJpaRepository.save(memberJpaEntity);
     }
 
     @Override
