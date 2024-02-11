@@ -50,4 +50,8 @@ public class ItemJpaEntity extends BaseTimeEntity {
                 .discountDate(itemAddRequest.discountDate())
                 .build();
     }
+
+    public void subtractTotalQuantity(final long itemQuantity) {
+        this.totalQuantity -= itemQuantity;
+    }
 }

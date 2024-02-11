@@ -16,4 +16,8 @@ public class OrderService {
     public void addToBasket(final long memberId, final AddToBasketRequest addToBasketRequest) {
         orderCreator.addToBasket(memberId, addToBasketRequest);
     }
+
+    public void createOrder(final long memberId, final long orderId) {
+        orderCreator.createOrder(memberId, orderId);
+    }
 }

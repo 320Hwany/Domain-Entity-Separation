@@ -6,5 +6,7 @@ public interface ItemRepository {
 
     void save(final ItemJpaEntity itemJpaEntity);
 
+    ItemJpaEntity getByIdWithPessimisticLock(final long itemId);
+
     long count();
 }

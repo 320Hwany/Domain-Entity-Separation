@@ -45,4 +45,8 @@ public class MemberJpaEntity extends BaseTimeEntity {
                 .money(0L)
                 .build();
     }
+
+    public void subtractOrderPrice(final long orderPrice) {
+        this.money -= orderPrice;
+    }
 }

@@ -1,28 +1,45 @@
 package domain_entity_separation.domain.order;
 
-import domain_entity_separation.domain.member.Member;
+
+import domain_entity_separation.domain.item.Item;
+import domain_entity_separation.persistence.entity.order.OrderJpaEntity;
+import lombok.Builder;
 
 import java.time.LocalDate;
-import java.util.List;
 
+@Builder
 public record Order(
-        Member member
-//        List<Basket> baskets
+        Item item,
+        long itemQuantity,
+        OrderStatus orderStatus
 ) {
 
-//    public long progressPayment(final LocalDate now) {
-//        List<Basket> baskets = baskets();
-//        long totalPrice = baskets.stream()
-//                .mapToLong(basket -> basket.calculatePrice(now))
-//                .sum();
-//
-//        validateMoney(totalPrice);
-//        return member.money() - totalPrice;
-//    }
-//
-//    private void validateMoney(final long totalPrice) {
-//        if (member.money() < totalPrice) {
-//            throw new IllegalArgumentException("금액이 부족합니다.");
-//        }
-//    }
+    public static Order toDomain(final Item item, final OrderJpaEntity orderJpaEntity) {
+        return Order.builder()
+                .item(item)
+                .itemQuantity(orderJpaEntity.getItemQuantity())
+                .orderStatus(orderJpaEntity.getOrderStatus())
+                .build();
+    }
+
+    public long calculatePrice(final long money, final LocalDate now) {
+        validateQuantity();
+        long itemPrice = item.applyDiscount(now);
+        long orderPrice = itemPrice * itemQuantity;
+        validateMoney(money, orderPrice);
+
+        return orderPrice;
+    }
+
+    private void validateQuantity() {
+        if (item.totalQuantity() < itemQuantity) {
+            throw new IllegalStateException("재고 수량이 부족합니다.");
+        }
+    }
+
+    private void validateMoney(final long money, final long totalPrice) {
+        if (money < totalPrice) {
+            throw new IllegalArgumentException("금액이 부족합니다.");
+        }
+    }
 }

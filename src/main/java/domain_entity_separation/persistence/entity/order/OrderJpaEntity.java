@@ -48,4 +48,8 @@ public class OrderJpaEntity extends BaseTimeEntity {
                 .orderStatus(OrderStatus.BASKET)
                 .build();
     }
+
+    public void updateOrderStatus(final OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
+    }
 }
