@@ -47,6 +47,12 @@ public class MemberRepositoryImpl implements MemberRepository {
     }
 
     @Override
+    public MemberJpaEntity getById(final long memberId) {
+        return memberJpaRepository.findById(memberId)
+                .orElseThrow(() -> new IllegalArgumentException("회원이 존재하지 않습니다."));
+    }
+
+    @Override
     public long count() {
         return memberJpaRepository.count();
     }

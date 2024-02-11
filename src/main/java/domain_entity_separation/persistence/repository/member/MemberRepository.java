@@ -10,5 +10,7 @@ public interface MemberRepository {
 
     MemberJpaEntity getByLoginId(final String loginId);
 
+    MemberJpaEntity getById(final long memberId);
+
     long count();
 }

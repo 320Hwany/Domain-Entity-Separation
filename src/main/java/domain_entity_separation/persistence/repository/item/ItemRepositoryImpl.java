@@ -39,6 +39,12 @@ public class ItemRepositoryImpl implements ItemRepository {
     }
 
     @Override
+    public ItemJpaEntity getById(final long itemId) {
+        return itemJpaRepository.findById(itemId)
+                .orElseThrow(() -> new IllegalArgumentException("상품 정보를 찾을 수 없습니다."));
+    }
+
+    @Override
     public long count() {
         return itemJpaRepository.count();
     }

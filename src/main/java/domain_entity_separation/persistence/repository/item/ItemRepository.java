@@ -8,5 +8,7 @@ public interface ItemRepository {
 
     ItemJpaEntity getByIdWithPessimisticLock(final long itemId);
 
+    ItemJpaEntity getById(final long itemId);
+
     long count();
 }

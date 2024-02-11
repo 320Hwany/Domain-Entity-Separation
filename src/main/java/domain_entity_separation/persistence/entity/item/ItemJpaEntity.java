@@ -31,8 +31,8 @@ public class ItemJpaEntity extends BaseTimeEntity {
     }
 
     @Builder
-    private ItemJpaEntity(final String itemName, final Long itemPrice,
-                          final Long discountPrice, final Long totalQuantity,
+    private ItemJpaEntity(final String itemName, final long itemPrice,
+                          final long discountPrice, final long totalQuantity,
                           final LocalDate discountDate) {
         this.itemName = itemName;
         this.itemPrice = itemPrice;
