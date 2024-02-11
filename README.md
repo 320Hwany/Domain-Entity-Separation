@@ -37,3 +37,11 @@ DDD도 모르고 헥사고날도 모른다...
   - [예외처리] 재고보다 적으면 예외가 발생한다.
   - [주의할 점] 처리시 동시성 문제 주의
 - 주문한 상품의 수만큼 재고에서 뺀다.
+
+## 도메인 모델
+
+<img src="docs/Domain-Model.png" width="800">
+
+## DB 엔티티 모델
+
+<img src="docs/DB-Entity-Model.png" width="800">
