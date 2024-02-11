@@ -26,4 +26,19 @@ class OrderJpaEntityTest {
         // then
         assertThat(orderJpaEntity.getOrderStatus()).isEqualTo(OrderStatus.BASKET);
     }
+
+    @DisplayName("주문 상태를 변경합니다.")
+    @Test
+    void updateOrderStatus() {
+        // given
+        OrderJpaEntity orderJpaEntity = OrderJpaEntity.builder()
+                .orderStatus(OrderStatus.BASKET)
+                .build();
+
+        // when
+        orderJpaEntity.updateOrderStatus(OrderStatus.ORDER_COMPLETE);
+
+        // then
+        assertThat(orderJpaEntity.getOrderStatus()).isEqualTo(OrderStatus.ORDER_COMPLETE);
+    }
 }

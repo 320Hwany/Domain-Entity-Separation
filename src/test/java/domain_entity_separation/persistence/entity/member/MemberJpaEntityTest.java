@@ -28,4 +28,19 @@ class MemberJpaEntityTest {
         // then
         assertThat(passwordEncoder.matches("password", memberJpaEntity.getPassword())).isTrue();
     }
+
+    @DisplayName("주문 금액만큼 회원의 돈을 차감합니다.")
+    @Test
+    void subtractOrderPrice() {
+        // given
+        MemberJpaEntity memberJpaEntity = MemberJpaEntity.builder()
+                .money(10000)
+                .build();
+
+        // when
+        memberJpaEntity.subtractOrderPrice(5000);
+
+        // then
+        assertThat(memberJpaEntity.getMoney()).isEqualTo(5000);
+    }
 }
