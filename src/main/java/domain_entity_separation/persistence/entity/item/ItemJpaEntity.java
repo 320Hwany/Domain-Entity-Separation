@@ -8,6 +8,7 @@ import lombok.Getter;
 import java.time.LocalDate;
 
 @Getter
+@Table(name = "item")
 @Entity
 public class ItemJpaEntity extends BaseTimeEntity {
 
@@ -17,9 +18,11 @@ public class ItemJpaEntity extends BaseTimeEntity {
 
     private String itemName;
 
-    private long itemPrice;
+    private Long itemPrice;
 
-    private long discountPrice;
+    private Long discountPrice;
+
+    private Long totalQuantity;
 
     private LocalDate discountDate;
 
@@ -27,11 +30,13 @@ public class ItemJpaEntity extends BaseTimeEntity {
     }
 
     @Builder
-    private ItemJpaEntity(final String itemName, final long itemPrice,
-                         final long discountPrice, final LocalDate discountDate) {
+    private ItemJpaEntity(final String itemName, final Long itemPrice,
+                          final Long discountPrice, final Long totalQuantity,
+                          final LocalDate discountDate) {
         this.itemName = itemName;
         this.itemPrice = itemPrice;
         this.discountPrice = discountPrice;
+        this.totalQuantity = totalQuantity;
         this.discountDate = discountDate;
     }
 }

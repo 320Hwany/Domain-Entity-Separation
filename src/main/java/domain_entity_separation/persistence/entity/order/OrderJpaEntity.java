@@ -16,17 +16,16 @@ public class OrderJpaEntity extends BaseTimeEntity {
     private Long id;
 
     @Association
-    private Long memberId;
-
-    @Association
     private Long basketId;
+
+    private Long orderPrice;
 
     protected OrderJpaEntity() {
     }
 
     @Builder
-    private OrderJpaEntity(final long memberId, final long basketId) {
-        this.memberId = memberId;
+    private OrderJpaEntity(final Long basketId, final Long orderPrice) {
         this.basketId = basketId;
+        this.orderPrice = orderPrice;
     }
 }
