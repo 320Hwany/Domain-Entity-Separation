@@ -1,5 +1,7 @@
 package domain_entity_separation.persistence.entity.order;
 
+import domain_entity_separation.domain.order.OrderStatus;
+import domain_entity_separation.dto.order.AddToBasketRequest;
 import domain_entity_separation.global.annotation.Association;
 import domain_entity_separation.persistence.entity.BaseTimeEntity;
 import jakarta.persistence.*;
@@ -16,16 +18,34 @@ public class OrderJpaEntity extends BaseTimeEntity {
     private Long id;
 
     @Association
-    private Long basketId;
+    private Long memberId;
 
-    private Long orderPrice;
+    @Association
+    private Long itemId;
+
+    private Long itemQuantity;
+
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
 
     protected OrderJpaEntity() {
     }
 
     @Builder
-    private OrderJpaEntity(final Long basketId, final Long orderPrice) {
-        this.basketId = basketId;
-        this.orderPrice = orderPrice;
+    private OrderJpaEntity(final long memberId, final long itemId,
+                           final long itemQuantity, final OrderStatus orderStatus) {
+        this.memberId = memberId;
+        this.itemId = itemId;
+        this.itemQuantity = itemQuantity;
+        this.orderStatus = orderStatus;
+    }
+
+    public static OrderJpaEntity addToBasketEntity(final long memberId, final AddToBasketRequest addToBasketRequest) {
+        return OrderJpaEntity.builder()
+                .memberId(memberId)
+                .itemId(addToBasketRequest.itemId())
+                .itemQuantity(addToBasketRequest.itemQuantity())
+                .orderStatus(OrderStatus.BASKET)
+                .build();
     }
 }
