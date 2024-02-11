@@ -1,5 +1,6 @@
 package domain_entity_separation.persistence.entity.item;
 
+import domain_entity_separation.dto.item.ItemAddRequest;
 import domain_entity_separation.persistence.entity.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -38,5 +39,15 @@ public class ItemJpaEntity extends BaseTimeEntity {
         this.discountPrice = discountPrice;
         this.totalQuantity = totalQuantity;
         this.discountDate = discountDate;
+    }
+
+    public static ItemJpaEntity toEntity(final ItemAddRequest itemAddRequest) {
+        return ItemJpaEntity.builder()
+                .itemName(itemAddRequest.itemName())
+                .itemPrice(itemAddRequest.itemPrice())
+                .discountPrice(itemAddRequest.discountPrice())
+                .totalQuantity(itemAddRequest.totalQuantity())
+                .discountDate(itemAddRequest.discountDate())
+                .build();
     }
 }

@@ -10,6 +10,7 @@ public record Item(
         String itemName,
         long itemPrice,
         long discountPrice,
+        long totalQuantity,
         LocalDate discountDate
 ) {
 
