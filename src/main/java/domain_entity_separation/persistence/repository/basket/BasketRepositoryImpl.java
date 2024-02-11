@@ -16,4 +16,9 @@ public class BasketRepositoryImpl implements BasketRepository {
     public void save(final BasketJpaEntity basketJpaEntity) {
         basketJpaRepository.save(basketJpaEntity);
     }
+
+    @Override
+    public long count() {
+        return basketJpaRepository.count();
+    }
 }

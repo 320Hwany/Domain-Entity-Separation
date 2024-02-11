@@ -1,6 +1,7 @@
 package domain_entity_separation.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import domain_entity_separation.persistence.repository.basket.BasketRepository;
 import domain_entity_separation.persistence.repository.member.MemberRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ public abstract class ImplementTest {
 
     @Autowired
     protected MemberRepository memberRepository;
+
+    @Autowired
+    protected BasketRepository basketRepository;
 
     @Autowired
     protected ObjectMapper objectMapper;

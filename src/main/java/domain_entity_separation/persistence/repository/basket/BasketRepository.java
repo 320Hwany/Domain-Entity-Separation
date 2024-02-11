@@ -5,4 +5,6 @@ import domain_entity_separation.persistence.entity.basket.BasketJpaEntity;
 public interface BasketRepository {
 
     void save(final BasketJpaEntity basketJpaEntity);
+
+    long count();
 }
