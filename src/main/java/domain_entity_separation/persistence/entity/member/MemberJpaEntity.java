@@ -29,7 +29,7 @@ public class MemberJpaEntity extends BaseTimeEntity {
 
     @Builder
     private MemberJpaEntity(final String loginId, final String password,
-                            final String username, final Long money) {
+                            final String username, final long money) {
         this.loginId = loginId;
         this.password = password;
         this.username = username;

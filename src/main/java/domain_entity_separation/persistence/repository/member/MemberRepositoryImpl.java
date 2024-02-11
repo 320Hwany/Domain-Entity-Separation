@@ -1,6 +1,7 @@
 package domain_entity_separation.persistence.repository.member;
 
 import domain_entity_separation.persistence.entity.member.MemberJpaEntity;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Repository;
 
 
@@ -19,14 +20,13 @@ public class MemberRepositoryImpl implements MemberRepository {
     }
 
     @Override
-    public MemberJpaEntity getById(final long memberId) {
-        return memberJpaRepository.findById(memberId)
-                .orElseThrow(() -> new IllegalArgumentException("회원을 찾을 수 없습니다."));
+    public MemberJpaEntity getByLoginId(final String loginId) {
+        return memberJpaRepository.findByLoginId(loginId)
+                .orElseThrow(() -> new InvalidDataAccessApiUsageException("아이디/비밀번호가 일치하지 않습니다."));
     }
 
     @Override
-    public MemberJpaEntity getByLoginId(final String loginId) {
-        return memberJpaRepository.findByLoginId(loginId)
-                .orElseThrow(() -> new IllegalArgumentException("아이디/비밀번호가 일치하지 않습니다."));
+    public long count() {
+        return memberJpaRepository.count();
     }
 }
