@@ -44,6 +44,9 @@ dependencies {
     // password encoder
     implementation 'org.springframework.security:spring-security-crypto:5.5.8'
 
+    // jdbc session
+    implementation 'org.springframework.session:spring-session-jdbc'
+
     // test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
