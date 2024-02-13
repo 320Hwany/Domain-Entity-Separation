@@ -41,7 +41,7 @@ public class OrderCreator {
     }
 
     @Transactional
-    public void createOrder(final long memberId, final long orderId) {
+    public void completeOrder(final long memberId, final long orderId) {
         MemberJpaEntity memberJpaEntity = memberFinder.getByIdWithPessimisticLock(memberId);
         OrderJpaEntity orderJpaEntity = updateOrderStatus(orderId);
         ItemJpaEntity itemJpaEntity = itemFinder.getByIdWithPessimisticLock(orderJpaEntity.getItemId());

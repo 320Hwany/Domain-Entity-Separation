@@ -18,6 +18,6 @@ public class OrderService {
     }
 
     public void createOrder(final long memberId, final long orderId) {
-        orderCreator.createOrder(memberId, orderId);
+        orderCreator.completeOrder(memberId, orderId);
     }
 }

@@ -67,7 +67,7 @@ class OrderCreatorTest extends ImplementTest {
         orderRepository.save(orderJpaEntity);
 
         // when
-        orderCreator.createOrder(memberJpaEntity.getId(), orderJpaEntity.getId());
+        orderCreator.completeOrder(memberJpaEntity.getId(), orderJpaEntity.getId());
 
         // then
         OrderJpaEntity findOrderEntity = orderRepository.getById(orderJpaEntity.getId());
@@ -104,7 +104,7 @@ class OrderCreatorTest extends ImplementTest {
         orderRepository.save(orderJpaEntity);
 
         // when
-        orderCreator.createOrder(memberJpaEntity.getId(), orderJpaEntity.getId());
+        orderCreator.completeOrder(memberJpaEntity.getId(), orderJpaEntity.getId());
 
         // then
         MemberJpaEntity findMemberEntity = memberRepository.getById(memberJpaEntity.getId());
@@ -141,7 +141,7 @@ class OrderCreatorTest extends ImplementTest {
         orderRepository.save(orderJpaEntity);
 
         // when
-        orderCreator.createOrder(memberJpaEntity.getId(), orderJpaEntity.getId());
+        orderCreator.completeOrder(memberJpaEntity.getId(), orderJpaEntity.getId());
 
         // then
         ItemJpaEntity findItemEntity = itemRepository.getById(itemJpaEntity.getId());
